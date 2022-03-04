@@ -11,10 +11,16 @@ function App() {
     .then(setListings)
   }, [])
 
+  function onDeleteClick(listing){
+    console.log("deleting", listing)
+    fetch(`http://localhost:6001/listings/${listing.id}`, {method:"DELETE"})
+    setListings(listings.filter((listingItem) => listingItem !==listing))
+  }
+
   return (
     <div className="app">
       <Header />
-      <ListingsContainer listings={listings}/>
+      <ListingsContainer listings={listings} onDeleteClick={onDeleteClick}/>
     </div>
   );
 }
