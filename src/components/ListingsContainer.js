@@ -1,11 +1,12 @@
 import React from "react";
  import ListingCard from "./ListingCard";
 
-function ListingsContainer({listings}) {
+function ListingsContainer({listings, onDeleteClick}) {
   const listingItem = listings.map((listingObj)=> (
     <ListingCard 
       key={listingObj.id}
       listing = {listingObj}
+      handleDeleteClick = {onDeleteClick}
     />
 
   ))
